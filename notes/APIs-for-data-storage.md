@@ -82,15 +82,6 @@ No SQL Database. An Object-based client side database.
 
 IndexedDB stores data, typically JavaScript objects or bytes. It also can store numbers, string and booleans too, but it is not common.
 
-- Every entry has a key.
-- The API is asynchronous.
-- No permission needed from user.
-- When storing objects, indexedDB <b>clones</b> them and cloning happens synchronously. This might cause problems if we are storing large objects.
-    - Solution: use indexedDB in a worker.
-- The API is event based. We can convert IndexedDB into Promise-Based API.
-- Supports transactions. The wrapper, that converts IndexedDB into Promise-Based API, has automatic transactions for the most common situations.
-- Supports DB versioning.
-
 
 
 # Cache Storage
@@ -139,7 +130,7 @@ Storage per origin can be defined as:
 
 
 ### Persistent
-- Browser can clear data with usr intervention.
+- Browser can clear data with user intervention.
 
 ### Persistent Storage Request
 
@@ -148,8 +139,7 @@ Returns a promise. It will tell us if permission was granted or not.
 
 - Firefox will ask user if user wants persistent storage for the website.
 - In Chrome whether it grants persistent storage or not, depends on user's engagement with the website. E.g. if the user has installed PWA, it will grant it. If the user has subscibed to web push notifications it will grant it, because if the push message arrives, there should be a service woker to attend that message. If we don't request persistent storage, Best Effort will be by default.
-    - My Experience: The first time Google didn't grant me persistent storage. I got persistent storage for this website only on next day.
-    - Solution: Until I got persistent storage granted, I used Firefox browser, which asked me whether I wanted persistent storage or not.
+    - Solution: Use Firefox browser, which asks whether we want persistent storage or not.
 
 ```await navigator.storage.persisted();```
 Will check if persistent storage was granted.
@@ -161,3 +151,12 @@ Will check if persistent storage was granted.
 - navigator.storage is part of <b>StorageManager API</b>
 - ```await navigator.storage.estimate()``` - In browsers (except webkit based (safari)), we can ask for estimation of the quota. It will return an object that will give us total quota and the current storage. It is an estimation, not the exact number. Sometimes browsers are faking the data to avoid fingerprinting (mostly if we are saving cross domain resources on cache storage).
 - The Storage APIs return promises - remember to use async / await with them.
+
+
+
+
+## Database and Performance
+
+- It's better to store small objects.
+- We can use Web Workers.
+- We can create custom indices for faster access to collections of objects (but don't abuse it).
