@@ -18,4 +18,3 @@ To run the code, use the command `npx serve -s` in the terminal. Open your brows
 
 ## Giving Credit
 Thanks [Maximiliano Firtman](https://frontendmasters.com/teachers/firt/) and the "[Web Storage APIs](https://frontendmasters.com/courses/web-storage-apis/)" workshop for such great learning experience.
-The notes you see are my contributions, reflecting my understanding of the subject.
