@@ -1,4 +1,3 @@
-<b></b>
 # IndexedDB
 
 No SQL Database. An Object-based client side database.
@@ -6,11 +5,10 @@ No SQL Database. An Object-based client side database.
 IndexedDB stores data, typically JavaScript objects or bytes. It also can store numbers, string and booleans too, but it is not common.
 
 - Every entry has a key.
-- The API is asynchronous.
 - No permission needed from user.
 - When storing objects, indexedDB <b>clones</b> them and cloning happens synchronously. This might cause problems if we are storing large objects.
     - Solution: use indexedDB in a worker.
-- The API is event based. We can convert IndexedDB into Promise-Based API.
+- The API is event based. We can convert IndexedDB into asynchronous Promise-Based API.
 - Supports transactions. The wrapper, that converts IndexedDB into Promise-Based API, has automatic transactions for the most common situations.
 - Supports DB versioning.
 
@@ -33,6 +31,29 @@ IndexedDB stores data, typically JavaScript objects or bytes. It also can store 
                     2. No:
                         - Error!
 
+```
+Open a IndexedDB database ----------------> Does it exist --------- No ----------------|
+     with 'name' and                       with that 'name'                            |
+     'version number'                             |                                    |
+                                                  |                                    |
+                                                  |                                    |
+                                                 Yes                                   |
+                                                  |                                    |
+                                                  |                                    |
+                                                  v                                    v
+                                         Is the 'version number'------ Yes -----> Upgrade event
+                                            greater than the                           |
+                                            browser version?                           |
+                                                  |                                    |
+                                                  |                                    |
+                                                  No                                   |
+                                                  |                                    |
+                                                  |                                    |
+                                                  v                                    |
+                                         Is the 'version number'                       v
+            Error! <-------- No ---------     equal to the      ------- Yes ------> Success
+                                            browser version?          
+```
 
 # IndexedDB API working steps
 

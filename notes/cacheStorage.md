@@ -3,7 +3,7 @@
 - It is part of the Service Worker spec, but not tied to its scope.
 - We can create different storages (called <b>caches</b>) under a name.
 - Every cache stores HTTP responses (header + body).
-- The key is HTTP request. For simplicity, we can use URL or URL + other header.
+- The key is HTTP request. For simplicity, we can use URL.
 - API is asynchronous, so it is promise based.
 - No permission needed from user.
 - We can store, update, delete and query HTTP responses by URL or request.
