@@ -2,7 +2,7 @@ import Menu from './Menu.js';
 import Order from './Order.js';
 import Router from './Router.js';
 
-navigator.serviceWorker.register('/sw.js');
+navigator.serviceWorker.register('/serviceWorker.js');
 
 (async function() {
     if (navigator.storage.persist()) {
