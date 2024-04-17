@@ -14,8 +14,8 @@ This workshop covers a variety of web storage APIs, including IndexedDB for stor
 - `.serviceWorker.js`: Contains the global service worker file.
 
 ## Usage
-To run the code, use the command `npx serve -s` in the terminal.
+To run the code, use the command `npx serve -s` in the terminal. Open your browser at http://localhost:3000.
 
 ## Giving Credit
 Thanks [Maximiliano Firtman](https://frontendmasters.com/teachers/firt/) and the "[Web Storage APIs](https://frontendmasters.com/courses/web-storage-apis/)" workshop for such great learning experience.
-The solutions and notes you see are my contributions, reflecting my understanding of the subject.
+The notes you see are my contributions, reflecting my understanding of the subject.
